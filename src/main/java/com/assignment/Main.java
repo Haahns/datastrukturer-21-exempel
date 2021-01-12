@@ -20,7 +20,6 @@ public class Main {
 
 		player.setMoney(0);
 		player2.setMoney(50);
-		//player.playerCounter: 2
 
 		// Skriv ut på kommandoraden
 		System.out.println("Hello " + player.getName());
