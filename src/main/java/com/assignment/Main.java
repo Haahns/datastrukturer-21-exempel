@@ -1,5 +1,7 @@
 package com.assignment;
 
+import java.util.Scanner;
+
 public class Main {
 
 	/** main()-metoden körs när man startar programmet
@@ -12,25 +14,23 @@ public class Main {
  	 */
 	public static void main(String[] args) {
 
-		/** Player-klassen instansieras enligt formeln
-		 *  Datatyp objektnamn = new Konstruktor();
-		 */
-		Player player = new Player("Foo");
-		Player player2 = new Player("Bar");
+		String playerName;
 
-		player.setMoney(0);
-		player2.setMoney(50);
-		//player.playerCounter: 2
+		Scanner console = new Scanner(System.in);
+		System.out.println("Ditt namn:");
+		playerName = console.nextLine();
+
+		Player player = new Player(playerName);
+
+		Things car = new Cars("Fiat", "500");
 
 		// Skriv ut på kommandoraden
-		System.out.println("Hello " + player.getName());
+		while (!player.isBroke()) {
+			System.out.println("Du har " + player.getMoney());
+			System.out.println("Du köper en sak för  " + player.buyThings());
+		}
 
-		if (player.isBroke()) {
-			System.out.println(player.getName() + " är pank.");
-		}
-		if (player2.isBroke()) {
-			System.out.println(player2.getName() + " är pank.");
-		}
+		System.out.println(player.getName() + " är pank och kör hem i sin " + car.getName());
 
 
 	}

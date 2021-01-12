@@ -1,9 +1,14 @@
 package com.assignment;
 
+import java.util.Random;
+
 public class Player {
 
     // åtkomst datatyp variabelnamn = "värde"
     private String name;
+
+
+
     private double money = 100.0;
     // https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems
     static int playerCounter = 0;
@@ -25,8 +30,18 @@ public class Player {
         this.name = name;
     }
 
+    public double getMoney() {
+        return money;
+    }
+
     public void setMoney(double money) {
         this.money = money;
+    }
+
+    public double buyThings() {
+        double thingPrice = new Random().nextInt(50)+1;
+        setMoney(money - thingPrice);
+        return thingPrice;
     }
 
     public boolean isBroke() {
