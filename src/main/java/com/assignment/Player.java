@@ -2,33 +2,68 @@ package com.assignment;
 
 import java.util.Random;
 
-public class Player {
+public class Player implements Actions {
 
     private String name;
-
+    String currency = "EUR";
     private double money = 100.0;
-    // https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems
 
-    /**
-     * En klassvariabel har samma värde i alla instanser av klassen,
-     * nyckelordet static gör variabeln till en klassvariabel.
+
+    /** Överlagring av konstruktor
+     * - objekt kan initieras både av Player("Foo") och Player("Foo", 100)
      */
-    static int playerCounter = 0;
+    public Player(String name, double money) {
+        this(name);
+        setMoney(money);
 
-
-    /**
-     * Konstruktormetoden körs när klassen instansieras och har alltid
-     * samma namn (med stor begynnelsebokstav) som klassen
-     */
+    }
     public Player(String name) {
         setName(name);
-        playerCounter++; // räknaren ökar med 1 varje gång klassen instansieras
     }
 
 
-    /**
-     * Getters och setters
+    /** Överlagring av vanliga metoder
+     * - Fungerar som default-parametrar så
+     * - Man kan köra både player.setMoney(100) och player.setMoney(100, "USD")
      */
+    public void setMoney(double money) {
+        setMoney(money, this.currency);
+    }
+    public void setMoney(double money, String currency) {
+        this.money = money;
+        this.currency = currency;
+    }
+    // Överlagring kan också betyda att metoden kan ta emot parametrar av annan typ
+    // Vi kan t.ex. överlagra setMoney() så att den kan ta emot String,
+    // Alltså t.ex. player.setMoney("100")
+    public void setMoney(String money) {
+        this.money = Integer.parseInt(money); // parseInt() gör om ett heltal i form av sträng till riktigt heltal
+    }
+
+
+
+    /** GRÄNSSNITT och ÖVERSKUGGNING
+     *
+     *Överskuggning av gränssnittsmetoden buyThings().
+     * Metoden måste finnas med eftersom den finns i ett gränssnitt som implementeras
+     * av den här klassen
+     * Annoteras med @Override både för kompilerarens och programmerarens skull
+     *
+     */
+    @Override
+    public double buyThings() {
+        double thingPrice;
+
+        thingPrice = new Random().nextInt(50)+1;
+
+        setMoney(money - thingPrice);
+
+        return thingPrice;
+    }
+
+
+
+
     public String getName() {
         return name;
     }
@@ -40,32 +75,8 @@ public class Player {
     public double getMoney() {
         return money;
     }
-
-    public void setMoney(double money) {
-        this.money = money;
-    }
-
-    public double buyThings() {
-        double thingPrice;
-        // Vi skapar ett slumptal mellan 1 och 50.
-        // Här är två sätt att göra samma sak:
-
-        // 1. Math.random() är det traditionella sättet att generera slumptal
-        // Formeln för en range är Math.random()*(max-min+1)+min, alltså:
-        thingPrice = Math.random() * (50) + 1;
-
-        // 2. Random-klassen har metoder för slumptalsgenerering av olika datatyp,
-        // är snabbare, och genererar bättre slumptal (mindre förutsägbara).
-        thingPrice = new Random().nextInt(50)+1;
-
-        setMoney(money - thingPrice);
-
-        return thingPrice;
-    }
-
-    // Man brukar namnge boolean-metoder med "is" eller "has" som förled, t.ex. isBroke() eller hasMoney()
     public boolean isBroke() {
-        return money <= 0; // Returnerar true om money är <= 0
+        return money <= 0;
     }
 
 }

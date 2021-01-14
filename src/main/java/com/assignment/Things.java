@@ -1,16 +1,14 @@
 package com.assignment;
 
-// Abstrakt klass tänkt att fungera som superklass för Cars
-abstract class Things {
+/** Abstrakt klass tänkt att fungera som superklass för Cars
+ *
+* Gränssnittet IThings implementeras här men dess metoder måste inte överskuggas här eftersom
+* Things är abstrakt. Däremot måste de överskuggas i Cars som ärver Things.
+ */
+abstract class Things implements IThings {
 
     private String name;
 
-    /**
-     * Vi behöver inte ange åtkomst för konstruktorn eftersom
-     * det inte går att instansiera en abstrakt klass.
-     * I normala fall skulle vi antagligen ha public här.
-     *
-     */
     Things(String name) {
         this.name = name;
     }

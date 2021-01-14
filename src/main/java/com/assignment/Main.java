@@ -4,40 +4,57 @@ import java.util.Scanner;
 
 public class Main {
 
-	/** main()-metoden körs när man startar programmet
-	 *  public = Kan köras från andra klasser, och av java runtime
-	 * 	static = kan köras utan att instansiera klassen
-	 * 	void = returtyp, void = returnerar ingenting
-	 * 	main() = metodens namn
-	 * 	String[] args = en array av argument som kan tas emot av programmet
-	 * 		(kommandoradsargument, t.ex. i "git status" är "status" ett kommandoradsargument.)
- 	 */
 	public static void main(String[] args) {
 
-		// Vi använder util-klassen Scanner för att läsa input från konsolen
 		String playerName;
-		// Skapa Scanner-objektet console
 		Scanner console = new Scanner(System.in);
 		System.out.println("Ditt namn:");
-		// definiera variabeln playerName med raden som skrivs i konsolen
 		playerName = console.nextLine();
-		// objektet instansieras med det namn som Scannern läst in
-		Player player = new Player(playerName);
 
-		// Vi instansierar objetet car med av typen Things, som en instans av klassen Cars
-		Things car = new Cars("Fiat", "500");
+		// Man kan deklarera flera variabler/objekt av samma typ på en gång så här
+		Player player, npc, currentPlayer, passivePlayer, tmpPlayer;
 
-		// Kör loopen så länge som inte player är pank
-		while (!player.isBroke()) {
-			// Använd gettern getMoney()
-			System.out.println("Du har " + player.getMoney());
-			// Metoden buyThings() returnerar priset vi betalar
-			System.out.println("Du köper en sak för  " + player.buyThings());
+		player = new Player(playerName);
+		npc = new Player("Botten");
+
+
+		// NY VERSION SOM LOOPAR TVÅ SPELARE
+
+		// "player" får börja
+		currentPlayer = player; // Den som köper
+		passivePlayer = npc; // Den som väntar på sin tur
+
+		// Yttre loop som håller på så länge inte den spelare som var aktiv senast är pank
+		while (!passivePlayer.isBroke()) {
+
+			// Inre loop som loopar två gånger, men avbryter i förtid om spelaren blir pank
+			for (int i = 0; i < 2 && !passivePlayer.isBroke(); i++) {
+
+				// Kör spelsekvensen för currentPlayer
+				// Vi använder format för att formatera texten.
+				// PLACEHOLDERS: %s = String, %d = int, %.2f = flyttal avrundat till två decimaler
+				// Man kan byta rad mellan parametrarna så blir det inte så långa rader och bättre läslighet.
+				System.out.format("%s har %.2f, köper för %.2f €, har %.2f € kvar\n",
+						currentPlayer.getName(),
+						currentPlayer.getMoney(),
+						currentPlayer.buyThings(),
+						currentPlayer.getMoney());
+
+				// Byt roll sinsemellan för andra varvet av for-loopen
+				tmpPlayer = passivePlayer;
+				passivePlayer = currentPlayer;
+				currentPlayer = tmpPlayer;
+			}
 		}
 
-		// Eftersom loopen tagit slut är player pank, och vi går vidare i programmet
-		System.out.println(player.getName() + " är pank och kör hem i sin " + car.getName());
+		Things car = new Cars("Fiat", "500");
 
+		// Vi vet att passivePlayer är pank eftersom det var den som var activePlayer i sista köpet
+		System.out.format("%s är pank och kör hem i sin %s. %s har ännu %.0f € kvar\n",
+				passivePlayer.getName(),
+				car.getName(),
+				currentPlayer.getName(),
+				currentPlayer.getMoney());
 
 	}
 }
