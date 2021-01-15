@@ -15,7 +15,7 @@ public class Main {
 		Player player, npc, currentPlayer, passivePlayer, tmpPlayer;
 
 		player = new Player(playerName);
-		npc = new Player("Botten");
+		npc = new Player("Datorn");
 
 
 		// NY VERSION SOM LOOPAR TVÅ SPELARE
