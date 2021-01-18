@@ -8,6 +8,7 @@ public class Car extends Thing {
     public Car(String name, String model) {
         super(name); // kör konstruktorn Things()
         this.model = model;
+        this.price = 10000;
     }
 
     /** Överskuggning:
@@ -25,7 +26,7 @@ public class Car extends Thing {
 
     @Override
     double getPrice() {
-        return 0;
+        return price;
     }
 
 

@@ -10,6 +10,6 @@ public interface Actions {
 
     // Abstrakt metod har ingen implementering
     // Den måste överskuggas i icke-abstrakta klasser som implementerar gränssnittet
-    double buyThings();
+    void buyThing(Thing thing);
 
 }
