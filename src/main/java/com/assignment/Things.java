@@ -5,7 +5,7 @@ package com.assignment;
 * Gränssnittet IThings implementeras här men dess metoder måste inte överskuggas här eftersom
 * Things är abstrakt. Däremot måste de överskuggas i Cars som ärver Things.
  */
-abstract class Things implements IThings {
+abstract class Things {
 
     private String name;
 

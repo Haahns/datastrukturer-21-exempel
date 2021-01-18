@@ -24,17 +24,4 @@ public class Cars extends Things {
     }
 
 
-    /** Gränssnitt:
-    * Överskuggning av metoderna från gränssnittet (Interface) IThings.
-     *
-     *
-     */
-    @Override
-    public void damage() {
-
-    }
-    @Override
-    public void repair() {
-
-    }
 }
