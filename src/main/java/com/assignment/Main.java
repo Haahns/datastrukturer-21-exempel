@@ -17,6 +17,7 @@ public class Main {
 		player = new Player(playerName);
 		npc = new Player("Datorn");
 
+		player.setCar(new Cars("Fiat", "500"));
 
 		// NY VERSION SOM LOOPAR TVÅ SPELARE
 
@@ -47,12 +48,10 @@ public class Main {
 			}
 		}
 
-		Things car = new Cars("Fiat", "500");
-
 		// Vi vet att passivePlayer är pank eftersom det var den som var activePlayer i sista köpet
 		System.out.format("%s är pank och kör hem i sin %s. %s har ännu %.0f € kvar\n",
 				passivePlayer.getName(),
-				car.getName(),
+				passivePlayer.getCar().getName(),
 				currentPlayer.getName(),
 				currentPlayer.getMoney());
 

@@ -8,6 +8,16 @@ public class Player implements Actions {
     String currency = "EUR";
     private double money = 100.0;
 
+    public Things getCar() {
+        return car;
+    }
+
+    public void setCar(Things car) {
+        this.car = car;
+    }
+
+    Things car;
+
 
     /** Överlagring av konstruktor
      * - objekt kan initieras både av Player("Foo") och Player("Foo", 100)
