@@ -8,6 +8,8 @@ public class Player implements Actions {
     String currency = "EUR";
     private double money = 100.0;
 
+    Thing latestPurchase;
+
 
     /** Överlagring av konstruktor
      * - objekt kan initieras både av Player("Foo") och Player("Foo", 100)
@@ -38,6 +40,16 @@ public class Player implements Actions {
     // Alltså t.ex. player.setMoney("100")
     public void setMoney(String money) {
         this.money = Integer.parseInt(money); // parseInt() gör om ett heltal i form av sträng till riktigt heltal
+    }
+
+    public void buyThing(Thing thing) {
+        money = money - thing.getPrice();
+        latestPurchase = thing;
+        //return String.format("Du köpte %s för %.2f", thing.getName(), thing.getPrice());
+    }
+
+    public Thing getLatestPurchase() {
+        return latestPurchase;
     }
 
 

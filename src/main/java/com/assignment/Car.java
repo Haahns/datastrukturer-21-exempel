@@ -1,11 +1,11 @@
 package com.assignment;
 
 // Subklassen Cars ärver superklassen Things
-public class Cars extends Things {
+public class Car extends Thing {
 
     // Vi vill ha en skild variabel för bilmodell
     private String model;
-    public Cars(String name, String model) {
+    public Car(String name, String model) {
         super(name); // kör konstruktorn Things()
         this.model = model;
     }
@@ -21,6 +21,11 @@ public class Cars extends Things {
     @Override
     public String getName() {
         return super.getName() + " " + model;
+    }
+
+    @Override
+    double getPrice() {
+        return 0;
     }
 
 
