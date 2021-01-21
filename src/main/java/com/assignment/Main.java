@@ -6,17 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		/** Shoppen listar varor både som Arraylist och HashMmap
-		 *  för att demonstrera båda teknikerna.
-		 *
-		 *  I dessa exempel borde allt som behövs för uppgift 3 finnas!
-		 */
-
-		// Scanner-objekt för att läsa input
 		Scanner console = new Scanner(System.in);
-		// Skapa spelare som har 100 €
 		Player player = new Player("Fredrik", 100);
-		// Instansiera själva shoppen
 		Shop shop = new Shop();
 
 		// Loopa på tills det kommer en break

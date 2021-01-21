@@ -5,15 +5,13 @@ import java.util.HashMap;
 
 public class Shop {
 
-    // ArrayList för våra produkter
     ArrayList<Thing> items = new ArrayList<>();
 
     public Shop() {
-        // Lägg till produkter i ArrayList
+        // Lägg till produkter i ArrayList, ClothingCategory-enum kan sättas med vid behov
         items.add(new Clothing("Kragskjorta", 20, ClothingCategory.DEMO_PRODUCT));
         items.add(new Clothing("Chinos", 50, ClothingCategory.CUSTOMIZED));
         items.add(new Clothing("Bandana", 10));
-
     }
 
     // Getter för Arraylist
@@ -21,12 +19,4 @@ public class Shop {
         return items;
     }
 
-
-    // HashMap för mera produkter
-    HashMap<String,Thing> products = new HashMap<>();
-
-    // Getter för HashMap
-    public HashMap<String,Thing> getProducts() {
-        return products;
-    }
 }
