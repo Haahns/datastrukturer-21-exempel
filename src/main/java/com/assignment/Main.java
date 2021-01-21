@@ -46,20 +46,6 @@ public class Main {
 			System.out.format("Köp från ArrayList, välj [1-%d] eller [q] för att lämna butiken\n",
 					shop.getItems().size());
 
-
-			// 2. HashMap-loop
-			System.out.println("--- Till salu (HashMap):");
-			for (String key : shop.getProducts().keySet()) {
-				currentThing = shop.getProducts().get(key);
-
-				System.out.format("[%s] - %s %.2f €\n",
-						key,
-						currentThing.getName(),
-						currentThing.getPrice());
-			}
-			// Skriv ut menyn
-			System.out.format("Köp från HashMap, skriv produktkod eller [q] för att lämna butiken\n");
-
 			// Läs användarens input, String.trim() tar bort onödig whitespace
 			String shopAction = console.nextLine().trim();
 
@@ -80,19 +66,6 @@ public class Main {
 					System.out.println("Ogiltigt produktnummer för ArrayList!\n");
 				}
 
-			// shopAction är vad som helst utom q, vi köper från HashMap
-			} else if (!shopAction.equalsIgnoreCase("q")) {  // Vi köper från HashMap
-
-				// Finns nyckeln i HashMap?
-				if (shop.getProducts().containsKey(shopAction)) {
-
-					// Använd get() för att hämta rätt sak ur HashMappen,
-					// åkalla player.buyThing() för att köpa den
-					player.buyThing(shop.getProducts().get(shopAction));
-
-				} else {
-					System.out.println("Ogiltig produktkod för HashMap!\n");
-				}
 
 			// shopAction är "q" - lämna butiken
 			} else {
