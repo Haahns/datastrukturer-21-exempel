@@ -1,11 +1,14 @@
 package com.assignment;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Player implements Actions {
+public class Player implements Actions, Serializable {
 
     private String name;
     private double money;
+
+    private int number = 5;
 
     Thing latestPurchase;
 

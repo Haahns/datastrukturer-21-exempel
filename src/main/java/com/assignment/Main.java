@@ -4,7 +4,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Player player = new Player("Fredrik", 100);
+        String saveFile = "player.save";
+        Player player;
+
+        if (FileUtils.loadObject(saveFile) != null) {
+            player = (Player) FileUtils.loadObject("player.save");
+        } else {
+            player = new Player("New Me", 100);
+        }
+
+
         Shop shop = new Shop();
 
 
@@ -38,7 +47,7 @@ public class Main {
 
             String shopAction;
 
-            String prompt = String.format("Köp från ArrayList, välj [1-%d] eller [q] för att lämna butiken\n", shop.getItems().size());
+            String prompt = String.format("Köp från ArrayList, välj [1-%d] eller [q] för att spara och avsluta\n", shop.getItems().size());
             shopAction = Utils.getUserInput(prompt);
 
             // shopAction är ett heltal, vi köper från Arraylist
@@ -61,7 +70,9 @@ public class Main {
 
                 // shopAction är "q" - lämna butiken
             } else {
-                System.out.println("Hej då!");
+                FileUtils.saveObject(player, saveFile); // gitignore!
+
+                System.out.println("Game saved!");
                 break;
             }
 

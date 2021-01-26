@@ -1,6 +1,8 @@
 package com.assignment;
 
-abstract class Thing {
+import java.io.Serializable;
+
+abstract class Thing implements Serializable {
 
     private String name;
     double price;
