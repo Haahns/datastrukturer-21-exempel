@@ -3,9 +3,21 @@ package com.assignment;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+
+/**
+ *  En utility-klass där alla metoder för att behandla filer finns samlade
+ *
+ */
 public class FileUtils {
 
 
+
+
+    /** saveObject serialiserar ett objekt och sparar i en fil.
+     *
+     * @param objectToSave
+     * @param fileName
+     */
     public static void saveObject(Object objectToSave, String fileName) {
 
         try {
@@ -13,6 +25,7 @@ public class FileUtils {
             ObjectOutputStream obj = new ObjectOutputStream(outStream);
 
             obj.writeObject(objectToSave);
+
 
             obj.close();
             outStream.close();
@@ -23,18 +36,25 @@ public class FileUtils {
 
     }
 
+    /** loadObject läser ett serialiserat objekt och returnerar
+     * ett användbart java-objekt.
+     *
+     * @param fileName
+     * @return Object
+     */
     public static Object loadObject(String fileName) {
 
         Object retObj = null;
 
         try {
-            FileInputStream inStream = new FileInputStream(fileName);
-            ObjectInputStream obj = new ObjectInputStream(inStream);
+
+            // Man kan nästla FileInputStream i ObjectInputStream om man inte vill
+            // instansiera dem i skilda objekt (som vi gör ovan i saveObject())
+            ObjectInputStream obj = new ObjectInputStream(new FileInputStream(fileName));
 
             retObj = obj.readObject();
 
             obj.close();
-            inStream.close();
 
         } catch (FileNotFoundException e) {
             System.out.println("No savefile found.");
@@ -51,6 +71,12 @@ public class FileUtils {
 
     }
 
+    /** Omvandlar en String-variabel till en dataström
+     * och sparar den i en fil
+     *
+     * @param saveStr
+     * @param fileName
+     */
     public static void writeTextFile(String saveStr, String fileName) {
 
         try {
@@ -59,14 +85,20 @@ public class FileUtils {
             OutputStreamWriter writer = new OutputStreamWriter(outStream, StandardCharsets.UTF_8);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
-            /*for (int i = 0; i < saveStr.length(); i++) {
-                writer.write(saveStr.charAt(i));
-            }*/
-
             bufferedWriter.write(saveStr);
-            //writer.close();
-
             bufferedWriter.close();
+
+            /* Utan BufferedWriter måste vi skriva strömmen tecken för tecken.
+            * BufferedWriter rekommenderas.
+
+            for (int i = 0; i < saveStr.length(); i++) {
+                writer.write(saveStr.charAt(i));
+            }
+
+            writer.close();
+
+            */
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -76,6 +108,11 @@ public class FileUtils {
         }
     }
 
+    /** readTextFile() läser en dataström från en fil och returnerar String
+     *
+     * @param fileName
+     * @return String
+     */
     public static String readTextFile(String fileName) {
 
         StringBuilder retStr = new StringBuilder();

@@ -3,7 +3,7 @@ package com.assignment;
 import java.io.Serializable;
 import java.util.Random;
 
-public class Player implements Actions, Serializable {
+public class Player implements Serializable, Actions {
 
     private String name;
     private double money;
