@@ -12,6 +12,7 @@ public class Shop {
         items.add(new Clothing("Kragskjorta", 20, ClothingCategory.DEMO_PRODUCT));
         items.add(new Clothing("Chinos", 50, ClothingCategory.CUSTOMIZED));
         items.add(new Clothing("Bandana", 10));
+        items.add(new Car("Fiat", "500"));
     }
 
     // Getter för Arraylist

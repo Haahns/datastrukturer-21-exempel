@@ -8,7 +8,10 @@ public class Player implements Serializable, Actions {
     private String name;
     private double money;
 
+    Inventory inventory;
+
     Thing latestPurchase;
+    Thing equippedItem = null;
 
     public Player(String name, double money) {
         this(name);
@@ -17,6 +20,7 @@ public class Player implements Serializable, Actions {
     }
     public Player(String name) {
         setName(name);
+        inventory = new Inventory();
     }
 
     @Override
@@ -29,11 +33,29 @@ public class Player implements Serializable, Actions {
         if (thing.getPrice() <= money) {
             money = money - thing.getPrice();
             latestPurchase = thing;
+
+            inventory.addItem(thing);
+
         } else {
             System.out.format("Du har inte råd med %s!\n", thing.getName());
         }
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+    public void equipItem(Thing thing) {
+        equippedItem = thing;
+    }
+
+    public String getEquippedName() {
+        if (equippedItem != null) {
+            return equippedItem.getName();
+        } else {
+            return "ingenting";
+        }
+
+    }
     // Visa vårt senaste uppköp
     public Thing getLatestPurchase() {
         return latestPurchase;

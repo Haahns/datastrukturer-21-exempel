@@ -18,14 +18,8 @@ public class Main {
             player = (Player) FileUtils.loadObject(saveFile);
         } else {
             // Ingen användbar save hittas, instansiera ett nytt objekt
-            player = new Player("New Me", 100);
+            player = new Player("New Me", 11000);
         }
-
-        // Vi använder vår writeTextFile()-metod för att skriva en fil
-        FileUtils.writeTextFile("Hello textfile!", "hello.txt");
-        // Vi läser in innehållet i filen till en String
-        String readStr = FileUtils.readTextFile("hello.txt");
-        System.out.println("Filen innehåller: " + readStr);
 
 
         /**OBS flyttar bara för att få bort det som inte

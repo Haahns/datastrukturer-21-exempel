@@ -1,3 +1,5 @@
+**/*.save
+
 # Created by https://www.toptal.com/developers/gitignore/api/java-web,intellij,gradle,vscode,bluej,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=java-web,intellij,gradle,vscode,bluej,eclipse
 

@@ -5,8 +5,7 @@ public class Clothing extends Thing {
     private String size;
     private double priceModifier = 1;
 
-    // Vi instansierar enum-objektet category av typen ClothingCategory
-    // (här med väntevärdet STANDARD)
+
     private ClothingCategory category = ClothingCategory.STANDARD;
 
     // Konstruktorn kan ta emot enum (ClothingCategory category) som parameter
@@ -37,6 +36,7 @@ public class Clothing extends Thing {
     public Clothing(String name, double price) {
         super(name);
         super.price = price;
+        thingType = ThingType.CLOTHING;
     }
 
     // Vi överskuggar getPrice från Thing för att få skild prisuträkning för Clothing-objekt
@@ -49,15 +49,6 @@ public class Clothing extends Thing {
     @Override
     public String getName() {
         String addInfo = "";
-
-        if (priceModifier != 1) {
-            // addinfo t.ex. " (DEMO_PRODUCT -20 %)"
-            // (eller med den avancerade enum-varianten (Provexemplar -20 %)
-            addInfo = String.format(" (%s %+.0f %%)",
-                    category,
-                    (priceModifier-1)*100
-            );
-        }
 
         return super.getName() + addInfo;
     }

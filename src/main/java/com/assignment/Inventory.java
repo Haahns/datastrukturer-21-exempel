@@ -18,3 +18,20 @@ public class Inventory {
         return items;
     }
 }
+
+
+/*
+Så här skulle vår struktur ungefär se ut i JSON:
+{
+    "CLOTHING": [
+        { "name": "shirt" },
+        { "name": "jeans" },
+        { "name": "bandana" }
+    ],
+    "CARS": [
+        { "name": "fiat" },
+        { "name": "tesla" }
+    ]
+}
+
+*/

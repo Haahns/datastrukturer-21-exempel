@@ -9,6 +9,7 @@ public class Car extends Thing {
         super(name); // kör konstruktorn Things()
         this.model = model;
         this.price = 10000;
+        thingType = ThingType.CAR;
     }
 
     /** Överskuggning:
