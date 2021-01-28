@@ -3,10 +3,16 @@ package com.assignment;
 /**
  *  En klass för själva spellogiken, för att städa upp Main lite.
  */
-
 public class App {
 
-    public App(Player player) {
+    public App(String saveFile) {
+        Player player;
+
+        if (FileUtils.loadObject(saveFile) != null) {
+            player = (Player) FileUtils.loadObject(saveFile);
+        } else {
+            player = new Player("New Me", 11000);
+        }
 
         Shop shop = new Shop();
 
@@ -35,6 +41,7 @@ public class App {
             shopAction = Utils.getUserInput(prompt);
 
 
+            // Köp sak ur shoppen
             if (Utils.isInteger(shopAction)) {
 
                 int itemIdx = Integer.parseInt(shopAction) - 1;
@@ -44,6 +51,8 @@ public class App {
                 } else {
                     System.out.println("Ogiltigt produktnummer för ArrayList!\n");
                 }
+
+            // Visa inventory
             } else if (shopAction.equalsIgnoreCase("i")) {
 
                 System.out.println("--- Du har följande saker:");
@@ -57,17 +66,20 @@ public class App {
                             currentThing.getName());
                 }
 
-
                 String inventoryAction = Utils.getUserInput(
                         String.format(
-                            "Välj [1-%d], eller [q] för att gå tillbaka\n",
+                            "Välj [1-%d] för att ta i bruk, [q] för att gå tillbaka till shoppen\n",
                             player.getInventory().getItems().size()
                         )
                 );
 
-                if (Utils.isInteger(inventoryAction)) {
+                // Välj sak ur inventory (om man ger ett heltal som är <= inventory.size)
+                if (Utils.isInteger(inventoryAction)
+                        && Integer.parseInt(inventoryAction) <= player.getInventory().getItems().size()) {
+
                     Thing currentItem = player.getInventory().getItems().get(Integer.parseInt(inventoryAction)-1);
 
+                    // Kolla den valda sakens typ, och
                     switch (currentItem.getThingType()) {
                         case CLOTHING:
                             player.equipItem(currentItem);
@@ -78,13 +90,17 @@ public class App {
                         default:
                             break;
                     }
-
+                } else {
+                    System.out.println("Ogiltigt val.");
                 }
 
             } else {
-
                 break;
             }
+
         }
+
+        FileUtils.saveObject(player, saveFile);
+        System.out.println("Game saved to file: " + saveFile);
     }
 }

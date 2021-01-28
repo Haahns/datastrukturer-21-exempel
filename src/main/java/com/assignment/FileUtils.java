@@ -10,9 +10,6 @@ import java.nio.charset.StandardCharsets;
  */
 public class FileUtils {
 
-
-
-
     /** saveObject serialiserar ett objekt och sparar i en fil.
      *
      * @param objectToSave
