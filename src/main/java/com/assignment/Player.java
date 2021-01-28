@@ -8,8 +8,6 @@ public class Player implements Serializable, Actions {
     private String name;
     private double money;
 
-    private int number = 5;
-
     Thing latestPurchase;
 
     public Player(String name, double money) {
