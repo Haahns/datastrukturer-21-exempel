@@ -1,4 +1,4 @@
-## Lektion 8 - Flytta bort programlogiken från main(), olika sorts saker i inventory
+## Lektion 8 - Länkade listor och grafer
 
 
 - Varje lektions exempel sparas i en skild _branch_.
