@@ -4,11 +4,11 @@ public class LinkedThangs {
     Node lastNode = null;
 
     private static class Node {
-        Thang thing;
+        Thang thang;
         Node next;
 
-        Node(Thang thing, Node next) {
-            this.thing = thing;
+        Node(Thang thang, Node next) {
+            this.thang = thang;
             this.next = next;
         }
         Node getNext() {
@@ -18,33 +18,36 @@ public class LinkedThangs {
             this.next = next;
         }
         String getName() {
-            return thing.getName();
+            return thang.getName();
         }
     }
 
 
     public void add(Thang newThing) {
 
+        // Deklarera ett nyt Node-objekt
         Node newNode;
 
         /* 1. Listan är tom */
         if (firstNode == null) {
 
+            // instansiera en ny nod (next=null)
             newNode = new Node(newThing, null);
-            //newThing.setNext(null);
             firstNode = newNode;
             lastNode = newNode;
 
-        /* 2. Om newThing hamnar efter sista elementet */
+        /* 2. Om newThing alfabetiskt hamnar efter sista elementet */
         } else if (newThing.getName().compareTo(lastNode.getName()) > 0) {
 
+            // instansiera en ny nod (next=null)
             newNode = new Node(newThing, null);
             lastNode.setNext(newNode);
             lastNode = newNode;
 
-        /* 3. Om newThing hamnar före det första elementet */
+        /* 3. Om newThing alfabetiskt hamnar före det första elementet */
         } else if (newThing.getName().compareTo(firstNode.getName()) < 0) {
 
+            // instansiera en ny nod (next=firstNode)
             newNode = new Node(newThing, firstNode);
             firstNode = newNode;
 
@@ -58,7 +61,9 @@ public class LinkedThangs {
 
                 if (newName.compareTo(t.getName()) >= 0 && newName.compareTo(nextName) <= 0) {
 
+                    // instansiera en ny nod (next=nuvarande elementets next)
                     newNode = new Node(newThing, t.getNext());
+                    // ändra nuvarande elementets next till den nya nod vi addar
                     t.setNext(newNode);
                     break;
                 }
@@ -77,6 +82,9 @@ public class LinkedThangs {
         return count;
     }
 
+    /* loopa igenom listan (genom att kolla vilket element som
+    * är nästa) och returnera elementens namn som String
+     */
     public String listThings() {
         String ret = "";
         Node t = firstNode;

@@ -1,4 +1,7 @@
-
+/**
+ * All metadata för datastrukturerna borttagna till förmån
+ * för skilda noder (se LinkedThangs)
+ */
 public class Thang {
 
     private String name;

@@ -61,6 +61,9 @@ public class LinkedThings {
         return count;
     }
 
+    /* loopa igenom listan (genom att kolla vilket element som
+     * är nästa) och returnera elementens namn som String
+     */
     public String listThings() {
         String ret = "";
         Thing t = firstThing;
