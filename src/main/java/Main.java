@@ -3,17 +3,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Helper-array för att underlätta skapandet av flera objekt,
-        // kan lika gärna ersättas med en linkList.add(new Thing("foo")) för varje
-        String[] thingNames = { "byxor", "skjorta", "shorts", "bandana", "pipo" };
+        LinkedThings linkedThings = new LinkedThings();
+
+        linkedThings.add(new Thing("skjorta"));
+        linkedThings.add(new Thing("byxor"));
+        linkedThings.add(new Thing("pipo"));
+        linkedThings.add(new Thing("shorts"));
+
+        System.out.println("Things:");
+        System.out.println(linkedThings.listThings());
 
 
-        for (String currentName: thingNames ) {
+        LinkedThangs linkedThangs = new LinkedThangs();
 
-            System.out.println(new Thing(currentName).getName());
-        }
+        linkedThangs.add(new Thang("skjorta"));
+        linkedThangs.add(new Thang("byxor"));
+        linkedThangs.add(new Thang("pipo"));
+        linkedThangs.add(new Thang("bandana"));
 
-
+        System.out.println("Thangs with nodes:");
+        System.out.println(linkedThangs.listThings());
 
     }
 }
