@@ -1,8 +1,15 @@
+/**
+ * Klass för att hantera en enkel länkad lista
+ */
 public class LinkedThings {
 
     Thing firstThing = null;
     Thing lastThing = null;
 
+    /**
+     * I likhet med add()-metoden i en ArrayList skapar vi här en egen
+     * metod för att lägga till element till vår länkade lista
+     */
     public void add(Thing newThing) {
 
         /* 1. Listan är tom */

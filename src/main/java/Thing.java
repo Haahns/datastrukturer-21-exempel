@@ -7,7 +7,6 @@ public class Thing {
     // Graph: lista över objektets relationer
     private ArrayList<Thing> relations;
 
-
     // LinkedList: referens till nästa element i länkade listan
     private Thing next;
 

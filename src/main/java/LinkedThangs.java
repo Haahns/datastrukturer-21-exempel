@@ -1,8 +1,19 @@
+/**
+ * Klass för att hantera en mer avancerad länkad lista med noder
+ */
 public class LinkedThangs {
 
     Node firstNode = null;
     Node lastNode = null;
 
+    /**
+     * Vi skapar Node som en inre (nästlad / nested) klass
+     * eftersom den aldrig kommer att användas utanför LinkedThangs
+     *
+     * static är inte nödvändigt, men det gör det klarare att den
+     * inte hör till enskilda objekt av LinkedThangs utan till klassen
+     * som helhet.
+     */
     private static class Node {
         Thang thang;
         Node next;
@@ -23,6 +34,10 @@ public class LinkedThangs {
     }
 
 
+    /**
+     * I likhet med add()-metoden i en ArrayList skapar vi här en egen
+     * metod för att lägga till element till vår länkade lista
+     */
     public void add(Thang newThing) {
 
         // Deklarera ett nyt Node-objekt
