@@ -1,4 +1,6 @@
-## Lektion 8 - Länkade listor och grafer
+## Lektion 9 - Algoritmer
+
+### Sekventiell sökning, binärsökning, bubble sort
 
 
 - Varje lektions exempel sparas i en skild _branch_.
