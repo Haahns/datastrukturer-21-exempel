@@ -2,6 +2,7 @@ public class AlgoUtils {
 
 
     // Bubbelsortering
+    // Vi sorterar arrayn ett elementpar i taget tills hela listan är sorterad
     public static String[] bubbleSort(String[] list) {
         int operations = 0;
 
@@ -20,7 +21,6 @@ public class AlgoUtils {
                     String temp = list[j]; // Spara nuvarande temporärt
                     list[j] = list[j + 1]; // Sätt nästas värde till nuvarande
                     list[j + 1] = temp; // Sätt temporära värdet till nästa
-
                 }
             }
             remaining--;
@@ -30,7 +30,8 @@ public class AlgoUtils {
         return list;
     }
 
-    // Binärsökning
+    // Binärsökning, kolla på vilken sida av mitten elementet finns,
+    // dela listan i två halvor, repetera.
     public static int arrayFindBin(String needle, String[] haystack) {
         int operations = 0;
 
@@ -39,18 +40,24 @@ public class AlgoUtils {
 
         while (left <= right) {
             operations++;
+
+            // Räkna ut mittersta elementet på basis av nuvarande left och right
             int mid = left + (right - left) / 2;
 
             //Kolla om needle är det mittersta elementet
             if (haystack[mid].equals(needle)) {
                 System.out.println("arrayFindBin-OPERATIONS: "+ operations);
+                // Sökningen klar, returnera mid
                 return mid;
 
-            // Om needle är större än det mittersta elementet
+            // Om mittersta elementet är mindre än needle
             } else if (haystack[mid].compareTo(needle) < 0 ) {
+                // Mitten + 1 blir nya vänstra
                 left = mid + 1;
+
             // Om needle är mindre än mittersta
             } else {
+                // Mitten - 1 blir nya högra
                 right = mid -1;
             }
         }
@@ -58,11 +65,13 @@ public class AlgoUtils {
     }
 
     // sekventiell sökning O(n)
+    // Loopa igenom arrayn tills elementet vi söker hittas
     public static int arrayFind(String needle, String[] haystack) {
-
         int operations = 0;
+
         for (int i = 0; i < haystack.length; i++) {
             operations++;
+
             if (needle.equals(haystack[i])) {
                 System.out.println("arrayFind-OPERATIONS: "+ operations);
                 return i;

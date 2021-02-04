@@ -5,29 +5,33 @@ public class Main {
 
     public static void main(String[] args) {
 
-
+        // Randomiserad String-array som testdata
         String[] haystack = {
-               // "A", "B", "C", "D", "E", "F", "G", "H","I", "J", "K", "L", "M", "N", "O", "P","Q", "R", "S", "T", "U", "V", "X", "Y", "Z"
-               "R", "S", "U", "T", "O", "B", "N", "H", "Z",
-                "I", "Y", "X", "K", "L", "E", "F", "M", "J",
-                "P", "W", "G", "A", "Q", "D", "C", "V",
-                "Ra",  "Sa",  "Ua",  "Ta",  "Oa",  "Ba",
-                "Na",  "Ha",  "Za",  "Ia",  "Ya",  "Xa",
-                "Ka",  "La",  "Ea",  "Fa",  "Ma",  "Ja",
-                "Pa",  "Wa",  "Ga",  "Aa",  "Qa",  "Da",
-                "Ca",  "Va",
+                "R", "S", "U", "T", "O", "B", "N", "H",
+                "Z", "I", "Y", "X", "K", "L", "E", "F",
+                "M", "J", "P", "W", "G", "A", "Q", "D",
+                "C", "V", "Ra", "Sa", "Ua", "Ta", "Oa",
+                "Ba", "Na", "Ha", "Za", "Ia", "Ya", "Xa",
+                "Ka", "La", "Ea", "Fa", "Ma", "Ja", "Pa",
+                "Wa", "Ga", "Aa", "Qa", "Da", "Ca", "Va",
         };
 
-        System.out.println("arrayFind: " + AlgoUtils.arrayFind("X", haystack));
+        String needle = "Ja";
 
-        System.out.println("unsorted: " + Arrays.toString(haystack));
-
-        // Sortera haystack med bubbleSort och spara i skild variabel
-        String[] sorted_list = AlgoUtils.bubbleSort(haystack);
-
+        // Sortera haystack med bubbleSort och spara i skild variabel, tidskomplexitet O(n²)
+        // (Vi använder här Arrays.copyOf() för att få en ny kopia av arrayn. Annars kommer
+        // den ursprungliga haystack att sorteras.)
+        String[] sorted_list = AlgoUtils.bubbleSort(Arrays.copyOf(haystack, haystack.length));
+        // Skriv ut den sorterade listan
         System.out.println("bubbleSort: " + Arrays.toString(sorted_list));
 
-        System.out.println("arrayFindBin: " + AlgoUtils.arrayFindBin("X", haystack));
+        // Sekventiell sökning av den sorterade listan, tidskomplexitet O(n)
+        System.out.println("arrayFind(unsorted): " + AlgoUtils.arrayFind(needle, haystack));
+        // Sekventiell sökning av den osorterade listan, tidskomplexitet O(n)
+        System.out.println("arrayFind(sorted): " + AlgoUtils.arrayFind(needle, sorted_list));
+
+        // Binärsökning av den sorterade listan (kan inte göras på en osorterad!), tidskomplexitet O(log n)
+        System.out.println("arrayFindBin: " + AlgoUtils.arrayFindBin(needle, haystack));
 
     }
 }
