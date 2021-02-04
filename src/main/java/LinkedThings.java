@@ -15,16 +15,12 @@ public class LinkedThings {
         /* 1. Listan är tom */
         if (firstThing == null) {
 
-            System.out.println("1." + newThing.getName());
-
             newThing.setNext(null);
             firstThing = newThing;
             lastThing = newThing;
 
         /* 2. Om newThing hamnar efter sista elementet */
         } else if (newThing.getName().compareTo(lastThing.getName()) > 0) {
-
-            System.out.println("2." + newThing.getName());
 
             lastThing.setNext(newThing);
             newThing.setNext(null);
@@ -33,15 +29,11 @@ public class LinkedThings {
         /* 3. Om newThing hamnar före det första elementet */
         } else if (newThing.getName().compareTo(firstThing.getName()) < 0) {
 
-            System.out.println("3." + newThing.getName());
-
             newThing.setNext(firstThing);
             firstThing = newThing;
 
         /* 4. Om newThing hamnar någonstans i mitten av listan */
         } else {
-
-            System.out.println("4." + newThing.getName());
 
             for (Thing t = firstThing; t.getNext() != null; t = t.getNext()) {
 
@@ -56,6 +48,25 @@ public class LinkedThings {
             }
         }
     }
+
+
+    /* Kolla om ett element existserar */
+    public int thingSearch(String name) {
+        int count = 0;
+        Thing t = firstThing;
+        while (t != null) {
+            if (t.getName().equals(name)) {
+                return count;
+            }
+            t = t.getNext();
+            count++;
+        }
+        return -1;
+    }
+
+
+
+
 
     /* räkna hur många element */
     public int size() {

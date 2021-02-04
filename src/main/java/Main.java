@@ -1,54 +1,33 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        /**
-         * Länkad lista med metadata i objekten
-         */
-        LinkedThings linkedThings = new LinkedThings();
 
-        linkedThings.add(new Thing("skjorta"));
-        linkedThings.add(new Thing("byxor"));
-        linkedThings.add(new Thing("pipo"));
-        linkedThings.add(new Thing("shorts"));
+        String[] haystack = {
+               // "A", "B", "C", "D", "E", "F", "G", "H","I", "J", "K", "L", "M", "N", "O", "P","Q", "R", "S", "T", "U", "V", "X", "Y", "Z"
+               "R", "S", "U", "T", "O", "B", "N", "H", "Z",
+                "I", "Y", "X", "K", "L", "E", "F", "M", "J",
+                "P", "W", "G", "A", "Q", "D", "C", "V",
+                "Ra",  "Sa",  "Ua",  "Ta",  "Oa",  "Ba",
+                "Na",  "Ha",  "Za",  "Ia",  "Ya",  "Xa",
+                "Ka",  "La",  "Ea",  "Fa",  "Ma",  "Ja",
+                "Pa",  "Wa",  "Ga",  "Aa",  "Qa",  "Da",
+                "Ca",  "Va",
+        };
 
-        System.out.println("-----\nThings:");
-        System.out.println(linkedThings.listThings());
+        System.out.println("arrayFind: " + AlgoUtils.arrayFind("X", haystack));
 
-        /**
-         * Länkad lista med metadata i skilda noder
-         */
-        LinkedThangs linkedThangs = new LinkedThangs();
+        System.out.println("unsorted: " + Arrays.toString(haystack));
 
-        linkedThangs.add(new Thang("skjorta"));
-        linkedThangs.add(new Thang("byxor"));
-        linkedThangs.add(new Thang("pipo"));
-        linkedThangs.add(new Thang("bandana"));
+        // Sortera haystack med bubbleSort och spara i skild variabel
+        String[] sorted_list = AlgoUtils.bubbleSort(haystack);
 
-        System.out.println("-----\nThangs with nodes:");
-        System.out.println(linkedThangs.listThings());
+        System.out.println("bubbleSort: " + Arrays.toString(sorted_list));
 
-        /**
-         * Grafstruktur med relationer i själva objekten
-         */
-        System.out.println("-----\nGrafstruktur:");
-        ArrayList<Thing> outfits = new GraphThings().createGraph();
-
-        // Loopa igenom alla element
-        for (int i = 0; i < outfits.size(); i++) {
-
-            System.out.println(outfits.get(i).getName() + " passar med:");
-
-            // Loopa igenom nuvarande elementets relationer
-            // (traditionellt "j" som index för inre loopar)
-            for (int j = 0; j < outfits.get(i).getRelations().size(); j++) {
-                System.out.println(outfits.get(i).getRelations().get(j).getName());
-            }
-
-
-        }
+        System.out.println("arrayFindBin: " + AlgoUtils.arrayFindBin("X", haystack));
 
     }
 }
