@@ -16,22 +16,21 @@ public class Main {
                 "Wa", "Ga", "Aa", "Qa", "Da", "Ca", "Va",
         };
 
-        String needle = "Ja";
 
-        // Sortera haystack med bubbleSort och spara i skild variabel, tidskomplexitet O(n²)
-        // (Vi använder här Arrays.copyOf() för att få en ny kopia av arrayn. Annars kommer
-        // den ursprungliga haystack att sorteras.)
-        String[] sorted_list = AlgoUtils.bubbleSort(Arrays.copyOf(haystack, haystack.length));
-        // Skriv ut den sorterade listan
-        System.out.println("bubbleSort: " + Arrays.toString(sorted_list));
+        String needle = "Fa";
 
         // Sekventiell sökning av den sorterade listan, tidskomplexitet O(n)
         System.out.println("arrayFind(unsorted): " + AlgoUtils.arrayFind(needle, haystack));
-        // Sekventiell sökning av den osorterade listan, tidskomplexitet O(n)
-        System.out.println("arrayFind(sorted): " + AlgoUtils.arrayFind(needle, sorted_list));
 
-        // Binärsökning av den sorterade listan (kan inte göras på en osorterad!), tidskomplexitet O(log n)
-        System.out.println("arrayFindBin: " + AlgoUtils.arrayFindBin(needle, haystack));
+        System.out.println("arrayFind(unsorted): " + AlgoUtils.arrayFindR(needle, haystack));
+
+        System.out.println(new LinkedThings().size());
+
+
+
+
+
+
 
     }
 }
