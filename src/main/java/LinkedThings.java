@@ -8,8 +8,20 @@ public class LinkedThings {
     Thing firstThing = shoes;
 
 
+    // Rekursiv size-loop (se nedan för iterativ version)
+    public int sizeR() {
+        return sizeR(firstThing);
+    }
+    private int sizeR(Thing thing) {
+        if (thing == null) {
+            return 0;
+        } else {
+            return 1 + sizeR(thing.getNext());
+        }
 
-    /** få storleken genom simpel loop
+    }
+
+    // Få storleken genom "vanlig" iterativ loop
     public int size() {
         int count = 0;
         Thing t = firstThing;
@@ -19,17 +31,8 @@ public class LinkedThings {
         }
         return count;
     }
-     */
 
-    public int size() {
-        return size(firstThing);
-    }
-    private int size(Thing thing) {
-        if (thing == null) {
-            return 0;
-        } else {
-            return 1 + size(thing.getNext());
-        }
 
-    }
+
+
 }

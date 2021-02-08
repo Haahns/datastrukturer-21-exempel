@@ -19,12 +19,15 @@ public class Main {
 
         String needle = "Fa";
 
-        // Sekventiell sökning av den sorterade listan, tidskomplexitet O(n)
+        // Iterativ sökning
         System.out.println("arrayFind(unsorted): " + AlgoUtils.arrayFind(needle, haystack));
+        // Rekursiv sökning
+        System.out.println("arrayFindR(unsorted): " + AlgoUtils.arrayFindR(needle, haystack));
 
-        System.out.println("arrayFind(unsorted): " + AlgoUtils.arrayFindR(needle, haystack));
-
-        System.out.println(new LinkedThings().size());
+        // Iterativ storlek
+        System.out.println("size(): " + new LinkedThings().size());
+        // Rekursiv storlek
+        System.out.println("sizeR(): " + new LinkedThings().sizeR());
 
 
 
