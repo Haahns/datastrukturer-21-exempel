@@ -1,7 +1,4 @@
-## Lektion 9 - Algoritmer
-
-### Sekventiell sökning, binärsökning, bubble sort
-
+## Lektion 10 - Rekursion
 
 - Varje lektions exempel sparas i en skild _branch_.
 - Välj branch genom att klicka på branch-menyn på github ![](https://people.arcada.fi/~welandfr/assets/main2.png)
